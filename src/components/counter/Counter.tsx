@@ -1,7 +1,7 @@
 // react
 import { FC, useState } from "react";
-import "./Counter.scss";
-
+// styles
+import classes from "./Counter.module.scss";
 interface CounterProps {}
 
 export const Counter: FC<CounterProps> = ({}) => {
@@ -21,8 +21,10 @@ export const Counter: FC<CounterProps> = ({}) => {
 
   return (
     <div>
-      <div>{count}</div>
-      <button onClick={onIncreaseClick}>increase</button>
+      <div className={classes.count}>{count}</div>
+      <button className="increase__button" onClick={onIncreaseClick}>
+        increase
+      </button>
       <button onClick={onDecreaseClick}>decrease</button>
       <button onClick={onResetClick}>reset</button>
     </div>
