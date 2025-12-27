@@ -11,12 +11,14 @@ import { Theme, ThemeContext } from "../../theme/ThemeContext";
 // styles
 import "../../styles/index.scss";
 import { useTheme } from "../../theme/useTheme";
+import { classNames } from "../../helpers/classNames/classNames";
 
 export const App = ({}) => {
   const { theme, toggleTheme } = useTheme();
+  const bool = true;
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={classNames("app", {}, [theme])}>
       <div className="topSide">
         <Link to={"/"}>Головна</Link>
         <Link to={"/about"}>Про сайт</Link>
