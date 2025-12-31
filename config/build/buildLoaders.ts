@@ -12,8 +12,11 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         options: {
           modules: {
             auto: (resPath: string) => Boolean(resPath.includes(".module.")),
-            localIdentName: isDev ? "[path][name]__[local]" : "[hash:base64:8]",
-            // namedExport: false
+            localIdentName: isDev
+              ? "[path][name]__[local]--[hash:base64:5]"
+              : "[hash:base64:8]",
+            namedExport: false, // ці дві властивості налаштували мені стилі
+            exportLocalsConvention: "as-is", //
           },
         },
       },
@@ -21,6 +24,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     ],
   };
 
+  // Если не используем тайпскрипт - нужен babel-loader
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: "ts-loader",
