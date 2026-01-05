@@ -1,24 +1,28 @@
 // react
-import { FC } from "react";
+import { FC, Suspense } from "react";
 // routing
 import { AppRouter } from "./providers/router";
 // helpers
-import { classNames } from "../shared/lib/constants/classNames/classNames";
-import { useTheme } from "./providers/ThemeProvider/useTheme";
+import { classNames } from "../shared/lib/classNames/classNames";
+import { useTheme } from "./providers/ThemeProvider";
 // ui
 import { Navbar } from "../widgets/Navbar";
+import { Sidebar } from "widgets/Sidebar";
 // styles
 import "../app/styles/index.scss";
 
 export const App = ({}) => {
-  const { theme, toggleTheme } = useTheme();
-  // const bool = true;
+  const { theme } = useTheme();
 
   return (
     <div className={classNames("app", {}, [theme])}>
-      <Navbar />
-      <button onClick={toggleTheme}>Toggle</button>
-      <AppRouter />
+      <Suspense fallback="">
+        <Navbar />
+        <div className="content-page">
+          <Sidebar />
+          <AppRouter />
+        </div>
+      </Suspense>
     </div>
   );
 };
