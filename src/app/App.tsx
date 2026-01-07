@@ -10,13 +10,14 @@ import { Navbar } from "../widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
 // styles
 import "../app/styles/index.scss";
+import { PageLoader } from "widgets/PageLoader/ui/PageLoader";
 
 export const App = ({}) => {
   const { theme } = useTheme();
 
   return (
     <div className={classNames("app", {}, [theme])}>
-      <Suspense fallback="">
+      <Suspense fallback={<PageLoader />}>
         <Navbar />
         <div className="content-page">
           <Sidebar />

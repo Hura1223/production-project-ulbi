@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-export const AboutPageAsync = lazy(
+ export const AboutPageAsync = lazy(
   () =>
     new Promise((resolve) => {
       //@ts-ignore
@@ -8,3 +8,5 @@ export const AboutPageAsync = lazy(
       setTimeout(() => resolve(import("./AboutPage")), 1500);
     })
 );
+
+
