@@ -7,7 +7,7 @@ import { Theme, useTheme } from "app/providers/ThemeProvider";
 import LightTheme from "../../../assets/icons/theme-light.svg";
 import DarkTheme from "../../../assets/icons/theme-dark.svg";
 // types
-import { ThemeButton } from "shared/ui/Button/ui/Button";
+import { ButtonTheme } from "shared/ui/Button/ui/Button";
 // ui
 import { Button } from "shared/ui/Button";
 // styles
@@ -21,7 +21,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
   const { theme, toggleTheme } = useTheme();
   return (
     <Button
-      theme={ThemeButton.CLEAR}
+      theme={ButtonTheme.CLEAR}
       className={classNames(styles.ThemeSwitcher, {}, [className])}
       onClick={toggleTheme}
     >

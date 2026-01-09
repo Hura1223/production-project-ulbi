@@ -1,5 +1,5 @@
 // react
-import { FC, Suspense } from "react";
+import { FC, Suspense, useEffect } from "react";
 // routing
 import { AppRouter } from "./providers/router";
 // helpers
