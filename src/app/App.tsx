@@ -1,5 +1,5 @@
 // react
-import { FC, Suspense, useEffect } from "react";
+import { FC, Suspense, useEffect, useState } from "react";
 // routing
 import { AppRouter } from "./providers/router";
 // helpers
@@ -9,8 +9,9 @@ import { useTheme } from "./providers/ThemeProvider";
 import { Navbar } from "../widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
 // styles
-import "../app/styles/index.scss";
+
 import { PageLoader } from "widgets/PageLoader/ui/PageLoader";
+import { Modal } from "shared/ui/Modal";
 
 export const App = ({}) => {
   const { theme } = useTheme();
