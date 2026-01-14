@@ -11,7 +11,6 @@ import { Sidebar } from "widgets/Sidebar";
 // styles
 
 import { PageLoader } from "widgets/PageLoader/ui/PageLoader";
-import { Modal } from "shared/ui/Modal";
 
 export const App = ({}) => {
   const { theme } = useTheme();
