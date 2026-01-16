@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",
-    "build:dev": "webpack --env mode=development"
+    "build:dev": "webpack --env mode=development",
+    "start:dev:server": "node ./json-server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jiti": "^2.6.1",
+    "json-server": "^1.0.0-beta.3",
     "mini-css-extract-plugin": "^2.5.3",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",

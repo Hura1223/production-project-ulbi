@@ -1,5 +1,7 @@
 // react
 import { FC, ReactNode, useCallback, useEffect, useRef, useState } from "react";
+// constants
+import { useTheme } from "app/providers/ThemeProvider";
 // libs
 import { classNames } from "shared/lib/classNames/classNames";
 // ui
@@ -12,18 +14,27 @@ interface ModalProps {
   children?: ReactNode;
   isOpen: boolean;
   onClose: () => void;
+  lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
 
-export const Modal: FC<ModalProps> = ({
-  className,
-  children,
-  isOpen,
-  onClose,
-}) => {
+export const Modal = (props: ModalProps) => {
+  const { isOpen, onClose, className, children, lazy } = props;
+
   const [isClosing, setIsClosing] = useState(false);
+
+  const [isMounted, setIsMounted] = useState(false);
+
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
 
   const closeHadler = useCallback(() => {
     if (onClose) {
@@ -63,14 +74,16 @@ export const Modal: FC<ModalProps> = ({
     [styles.isClosing]: isClosing,
   };
 
+  if (lazy && !isMounted) {
+    return null;
+  }
+
   return (
     <Portal>
-      <div className={classNames(styles.Modal, mods, [className])}>
+      <div className={classNames(styles.Modal, mods, [className, theme])}>
         <div className={styles.overlay} onClick={closeHadler}>
           <div className={styles.content} onClick={onContentClick}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
-            fugiat assumenda velit eos eum hic sed doloribus ullam recusandae
-            vero iure, sequi architecto nulla soluta.
+            {children}
           </div>
         </div>
       </div>
