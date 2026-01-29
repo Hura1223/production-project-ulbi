@@ -1,5 +1,8 @@
 // react
 import { FC, useCallback, useState } from "react";
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { getUserAuthData, userActions } from "entities/User";
 // routing
 import { Link } from "react-router-dom";
 // helpers
@@ -20,7 +23,12 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ className }: NavbarProps) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
+
   const { t } = useTranslation();
+
+  const authData = useSelector(getUserAuthData);
+
+  const dispatch = useDispatch();
 
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
@@ -29,6 +37,24 @@ export const Navbar: FC<NavbarProps> = ({ className }: NavbarProps) => {
   const onShowModal = useCallback(() => {
     setIsAuthModal(true);
   }, []);
+
+  const onLogOut = useCallback(() => {
+    dispatch(userActions.logOut());
+  }, [dispatch]);
+
+  if (authData) {
+    return (
+      <div className={classNames(styles.Navbar, {}, [className])}>
+        <Button
+          theme={ButtonTheme.CLEAR_INVERTED}
+          className={styles.links}
+          onClick={onLogOut}
+        >
+          {t("Выйти")}
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className={classNames(styles.Navbar, {}, [className])}>
@@ -39,7 +65,9 @@ export const Navbar: FC<NavbarProps> = ({ className }: NavbarProps) => {
       >
         {t("Войти")}
       </Button>
-      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      {isAuthModal && (
+        <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      )}
     </div>
   );
 };
