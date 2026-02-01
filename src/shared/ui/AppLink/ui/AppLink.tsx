@@ -1,5 +1,5 @@
 // react
-import { FC } from "react";
+import { FC, memo } from "react";
 // routing
 import { Link, LinkProps } from "react-router-dom";
 // helpers
@@ -18,7 +18,7 @@ interface AppLinkProps extends LinkProps {
   theme?: AppLinkTheme;
 }
 
-export const AppLink: FC<AppLinkProps> = (props) => {
+export const AppLink: FC<AppLinkProps> = memo((props) => {
   const {
     children,
     className,
@@ -38,6 +38,4 @@ export const AppLink: FC<AppLinkProps> = (props) => {
       {children}
     </Link>
   );
-};
-
-//
+});

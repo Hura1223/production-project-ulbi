@@ -1,5 +1,5 @@
 // react
-import { FC, useCallback, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAuthData, userActions } from "entities/User";
@@ -21,7 +21,7 @@ interface NavbarProps {
   className?: string;
 }
 
-export const Navbar: FC<NavbarProps> = ({ className }: NavbarProps) => {
+export const Navbar: FC<NavbarProps> = memo(({ className }: NavbarProps) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
 
   const { t } = useTranslation();
@@ -70,4 +70,4 @@ export const Navbar: FC<NavbarProps> = ({ className }: NavbarProps) => {
       )}
     </div>
   );
-};
+});

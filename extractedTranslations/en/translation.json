@@ -1,4 +1,5 @@
 {
+  "PROFILE PAGE": "PROFILE PAGE",
   "Введите ": "Enter ",
   "Введите username": "Enter username",
   "Введите пароль": "Enter password",
@@ -14,6 +15,7 @@
     "": ""
   },
   "Прокинуть ошибку": "Throw error",
+  "Профиль": "Profile",
   "Страница не найдена": "Page not found",
   "Форма авторизации": "Authorization form",
   "Язык": "Language"

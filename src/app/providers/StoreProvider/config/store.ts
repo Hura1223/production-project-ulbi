@@ -4,6 +4,7 @@ import { counterReducer } from "entities/Counter/model/slice/counterSlice";
 import { userReducer } from "entities/User";
 import { loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
 import { createReducerManager } from "./reducerManager";
+import { useDispatch } from "react-redux";
 
 export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
@@ -24,3 +25,5 @@ export function createReduxStore(initialState?: StateSchema) {
 
   return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
