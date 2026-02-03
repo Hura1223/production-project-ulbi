@@ -1,9 +1,16 @@
 // react
-import { FC, ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import {
+  MutableRefObject,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 // constants
 import { useTheme } from "app/providers/ThemeProvider";
 // libs
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames, Mods } from "shared/lib/classNames/classNames";
 // ui
 import { Portal } from "shared/ui/Portal";
 // styles
@@ -12,7 +19,7 @@ import styles from "./Modal.module.scss";
 interface ModalProps {
   className?: string;
   children?: ReactNode;
-  isOpen: boolean;
+  isOpen?: boolean;
   onClose: () => void;
   lazy?: boolean;
 }
@@ -26,7 +33,9 @@ export const Modal = (props: ModalProps) => {
 
   const [isMounted, setIsMounted] = useState(false);
 
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>() as MutableRefObject<
+    ReturnType<typeof setTimeout>
+  >;
 
   const { theme } = useTheme();
 
@@ -56,7 +65,7 @@ export const Modal = (props: ModalProps) => {
         closeHadler();
       }
     },
-    [closeHadler]
+    [closeHadler],
   );
 
   useEffect(() => {
@@ -69,7 +78,7 @@ export const Modal = (props: ModalProps) => {
     };
   }, [isOpen, onKeyDownClick]);
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [styles.opened]: isOpen,
     [styles.isClosing]: isClosing,
   };

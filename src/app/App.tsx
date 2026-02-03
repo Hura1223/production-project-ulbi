@@ -14,6 +14,7 @@ import { PageLoader } from "widgets/PageLoader/ui/PageLoader";
 import { useDispatch } from "react-redux";
 import { userActions } from "entities/User";
 
+
 export const App = ({}) => {
   const { theme } = useTheme();
   const dispatch = useDispatch();
