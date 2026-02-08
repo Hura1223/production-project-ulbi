@@ -1,21 +1,48 @@
 {
   "posts": [
-    { "id": "1", "title": "json-server1", "author": "typicode" },
-    { "id": "2", "title": "json-server2", "author": "typicode" },
-    { "id": "3", "title": "json-server3", "author": "typicode" },
-    { "id": "4", "title": "json-server4", "author": "typicode" }
+    {
+      "id": "1",
+      "title": "json-server1",
+      "author": "typicode"
+    },
+    {
+      "id": "2",
+      "title": "json-server2",
+      "author": "typicode"
+    },
+    {
+      "id": "3",
+      "title": "json-server3",
+      "author": "typicode"
+    },
+    {
+      "id": "4",
+      "title": "json-server4",
+      "author": "typicode"
+    }
   ],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "users": [{ "id": 1, "username": "admin", "password": "123" }],
-  "profile": 
-  {
-      "first": "Тимур",
-      "lastname":"Ульби",
-      "age": 22,
-      "currency": "USD",
-      "country": "Ukraine",
-      "city": "Kyiv",
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
       "username": "admin",
-      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
-   }
+      "password": "123"
+    }
+  ],
+  "profile": {
+    "first": "Тимурsdada",
+    "lastname": "Ульбиx",
+    "currency": "EUR",
+    "country": "Kazakhstan",
+    "city": "Lviv",
+    "username": "admin",
+    "avatar": "data:image/png;base64,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",
+    "age": 23
+  }
 }

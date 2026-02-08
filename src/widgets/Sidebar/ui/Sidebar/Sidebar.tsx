@@ -4,14 +4,7 @@ import { FC, memo, useMemo, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 // types
 import { ButtonSize, ButtonTheme } from "shared/ui/Button/ui/Button";
-import {
-  SideBarItemList,
-  SidebarItemType,
-} from "widgets/Sidebar/model/types/items";
-// libs
-import { useTranslation } from "react-i18next";
-// constants
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import { SideBarItemList } from "widgets/Sidebar/model/types/items";
 // ui
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";

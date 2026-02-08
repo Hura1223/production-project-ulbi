@@ -1,5 +1,8 @@
 // react
 import { FC, memo } from "react";
+// redux
+import { useSelector } from "react-redux";
+import { getUserAuthData } from "entities/User";
 // libs
 import { useTranslation } from "react-i18next";
 // helpers
@@ -19,6 +22,12 @@ interface SidebarItemProps {
 
 export const SidebarItem: FC<SidebarItemProps> = memo(({ item, collapsed }) => {
   const { t } = useTranslation();
+  const isAuth = useSelector(getUserAuthData);
+
+  if (item.authOnly && !isAuth) {
+    return null;
+  }
+
   return (
     <AppLink
       to={item.path}
